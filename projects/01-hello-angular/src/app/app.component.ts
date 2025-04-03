@@ -9,7 +9,25 @@ import { RouterOutlet } from '@angular/router';
   template: `
     <h1>If you are reading this...</h1>
     <p>Things have worked out well! 🎉</p>
+    <h2> Favorite Books: </h2>
+    <ol>
+    @for (book of books; track book) {
+      <li> {{ book }} </li>
+    }
+    </ol>
   `,
-  styles: ``,
+  styles: `
+    ol {
+      list-style-type: upper-roman;
+    }
+  `,
 })
-export class AppComponent {}
+
+export class AppComponent {
+  books = [
+    'Think and Grow Rich',
+    'Wiser than the devil',
+    'From the Trashman to the Cash Man']
+
+    userName = 'codingChamp'
+}
