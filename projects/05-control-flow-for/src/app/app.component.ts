@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Car } from './car.type';
+
 
 @Component({
   selector: 'app-root',
@@ -6,38 +8,45 @@ import { Component } from '@angular/core';
   template: `
     <section class="container">
       <!-- This article element represents and entire listing -->
-      <article class="listing">
-        <div class="image-parent">
-          <img class="product-image" src="https://placehold.co/100x100" />
-        </div>
-        <section class="details">
-          <p class="title"><!-- car make and model--></p>
-          <hr />
-          <p class="detail">
-            <span>Year</span>
-            <span><!-- year --></span>
-          </p>
-          <div class="detail">
-            <span>Transmission</span>
-            <span><!-- transmission --></span>
-          </div>
-          <p class="detail">
-            <span>Mileage</span>
-            <span><!-- miles --></span>
-          </p>
-          <p class="detail">
-            <span>Price</span>
-            <span><!-- price --></span>
-          </p>
-        </section>
-      </article>
-    </section>
+       @for (car of carList; track car) {
+         <article class="listing">
+           <div class="image-parent">
+             <img class="product-image"
+              src="https://placehold.co/100x100/cyan/black" />
+           </div>
+           <section class="details">
+             <p class="title">{{ car.make + ' ' + car.model }}</p>
+             <hr />
+             <p class="detail">
+               <span>Year</span>
+               <span>{{ car.year }}</span>
+             </p>
+             <div class="detail">
+               <span>Transmission</span>
+               <span>{{ car.transmission }}</span>
+             </div>
+             <p class="detail">
+               <span>Mileage</span>
+               <span>{{ car.miles }}</span>
+             </p>
+             <p class="detail">
+               <span>Price</span>
+               <span> {{ car.price }}</span>
+             </p>
+           </section>
+         </article>
+       }
+       @empty {
+        <p> Sorry there is no car yet, please comeback tomorrow </p>
+       }
+    </section>s
   `,
   styleUrl: 'app.component.css',
 })
 export class AppComponent {
-  carList = [
+  carList: Array<Car> = [
     {
+      id: 0,
       make: 'Foyoda',
       model: 'Famery',
       miles: 54354,
@@ -46,6 +55,7 @@ export class AppComponent {
       transmission: 'Automatic',
     },
     {
+      id: 1,
       make: 'Ronda',
       model: 'Disaccord',
       miles: 100000,
@@ -54,6 +64,7 @@ export class AppComponent {
       transmission: 'Automatic',
     },
     {
+      id: 2,
       make: 'Specific Motors',
       model: 'Spoke',
       miles: 100000,
@@ -62,6 +73,7 @@ export class AppComponent {
       transmission: 'Automatic',
     },
     {
+      id: 3,
       make: 'Fjord',
       model: 'Pocus',
       miles: 1,
