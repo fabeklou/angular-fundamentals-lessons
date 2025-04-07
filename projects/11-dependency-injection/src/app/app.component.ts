@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 
 import { UserService } from './user.service';
 import { User } from './data';
@@ -28,6 +28,12 @@ export class AppComponent {
   constructor() {
     this.useServiceToFetchUserData();
   }
+
+  /** implements OnInit before */
+  // async ngOnInit(): Promise<void> {
+  //   const data = await this.userService.getUserData();
+  //   this.userDataList = data;
+  // }
 
   userDataList: Array<User> = [];
   userService = inject(UserService);
