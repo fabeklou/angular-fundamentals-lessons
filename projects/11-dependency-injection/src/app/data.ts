@@ -21,13 +21,14 @@ export interface Geo {
   lat: string;
   lng: string;
 }
+
 export interface Company {
   name: string;
   catchPhrase: string;
   bs: string;
 }
 
-export const data = [
+export const userList: Array<User> = [
   {
     id: 1,
     name: 'Leanne Graham',

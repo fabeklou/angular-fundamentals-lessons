@@ -1,13 +1,19 @@
-import { data, User } from './data';
+import { Injectable } from '@angular/core';
+import { userList, User } from './data';
 
+
+@Injectable({ providedIn: 'root' })
 export class UserService {
-  private userData: User[] = data;
+  private readonly userData: User[] = userList;
 
-  constructor() {}
+  constructor() { }
 
   getUserData(): Promise<User[]> {
-    return new Promise((resolve) => {
-      resolve(this.userData);
-    });
+    /**
+     * return new Promise((resolve) => {
+     *    resolve(this.userData);
+     * });
+     */
+    return Promise.resolve(this.userData)
   }
 }
